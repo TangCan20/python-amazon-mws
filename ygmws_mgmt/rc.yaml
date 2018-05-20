@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: 'ygawcde-mgmt'
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: ygawcde-mgmt
+        app: ygawcde
+    spec:
+      nodeSelector:
+        ygawcde_mgmt: master  # kubectl label nodes 172.18.248.190 ygawcde_mgmt=master
+      volumes:
+        - name: data
+          hostPath:
+           path: /production/ygawcde_mgmt/data
+      containers:
+        - name: ygawcde-mgmt
+          image: 172.18.248.180:5000/ygawcde_mgmt:latest
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: data
+              mountPath: /production/ygawcde_mgmt/data
+#          resources:
+#            limits:
+#              memory: "1024Mi"
+          ports:
+          - name: ygawcde-mgmt
+            containerPort: 23056
+            hostPort: 23056
+            protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /ygawcde/mgmt/v1/alive
+              port: 23056
+            initialDelaySeconds: 60
+            timeoutSeconds: 60
+          env:
+            - name: ETCD_SERVICE_SERVICE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-node-info
+                  key: endpoints
+            - name: ETCD_SERVICE_SERVICE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-node-info
+                  key: port

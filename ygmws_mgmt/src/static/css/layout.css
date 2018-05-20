@@ -1,0 +1,246 @@
+/*reset*/
+body,p,ul,li,a,div,span,img,input,button,table,tr,td{
+	margin: 0;
+	padding:0;
+}
+*{
+	box-sizing: border-box;
+	-webkit-box-sizing:border-box; 
+	font-family: 'Microsoft Yahei'
+} 
+li{
+	list-style: none; 
+}
+.banner,.background,.content,.footer{
+	width: 100%;
+}
+.center{
+	width: 62%;
+	margin:0 auto; 
+} 
+
+/*banner*/
+.banner{
+	height: 70px; 
+	background: #333;
+	padding-top: 20px
+}
+.banner img{
+	margin-top: -14px;  
+}
+.banner span{
+	font-size: 26px;
+	font-size: bold;
+	color: #fff;
+	display: inline-block;
+	border-left: 2px solid #fff;
+	margin-left: 20px;
+	padding-left: 20px;
+}
+
+/*content*/
+.content{
+	margin-top: 50px; 
+}
+#myTab{ 
+	background: #00c2ff; 
+}
+#myTab li{
+	width: 200px;
+	height: 50px;
+	line-height: 50px;  	 
+} 
+#myTab li:nth-child(1){
+	position: relative;
+	right: -20px; 
+}
+#myTab a{ 
+	height: 50px;
+	text-align: center; 
+	border-radius: 0 0 0 0; 
+	margin-right: 0px;  
+	font-size: 18px;
+	font-weight: bold; 
+}
+
+a{
+	color:#fff;
+}
+a:hover{
+	color:#333;
+}
+.nav li a:hover{
+	background: #f5f5f5;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:hover{
+	color:#333;
+}
+.nav-tabs li:hover{
+	background: #f5f5f5
+}
+
+/*tab*/
+.tab1 .tab2{
+	width: 100%;
+	margin-top: 40px;
+}
+
+/*tab1*/
+.client,.line,.pie{
+	position: relative; 
+}
+#tab1 .mark{
+	position: absolute;
+	left: 0px; 
+	top:26px; 
+	width: 20px;  
+	height: 8px;
+	background: #00c2ff;  
+}  
+.heading{ 
+	color:#333;
+	font-size: 20px;
+	font-weight: bold;  
+	position: relative;
+	left: 36px;
+	padding-top: 16px;
+	padding-bottom: 16px;  
+}
+
+.line .heading,.pie .heading{
+	width: 97%;
+	border-top:1px solid #eaeaea;   
+	border-bottom:1px solid #eaeaea; 
+}
+.client{
+	margin-top: 50px; 
+	position: relative;
+}
+.client .menu{
+	position: absolute;
+	left: 180px;
+	top:16px;
+	width: 310px;
+	height: 36px;
+	padding-left: 16px;
+	padding-right: 16px;
+	font-size: 16px;
+	color: #333;
+	border:1px solid #eaeaea;
+	border-radius: 5px;
+}
+b{
+	position: relative;
+	right: -170px;
+}
+#yogrt{
+	height: 36px;
+	line-height: 36px;
+	width: 100%;
+	text-decoration: none;
+	font-size: 16px;
+	color: #333;
+}
+.menu ul{
+	width: 310px;
+}
+
+
+.line{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.data_map{width:100%; height:300px;}
+.counter_map_cls{float:left;width:50%; height:300px;}
+
+.map_series{width:100%; height:200px; margin-top:10px; margin-bottom:10px}
+.type_map_cls{ float:left; width:30%; height:200px;}
+
+/*tab2*/
+.info{
+	position: relative; 
+	margin-top: 40px;
+	padding-top: 30px;
+	padding-left: 36px;
+	padding-bottom: 36px;  
+	border:1px solid #ddd;
+	border-radius: 5px; 
+}  
+#tab2 .mark{
+	position: absolute;
+	top: 40px;
+	left: 0px; 
+	width: 20px;    
+	height: 8px;
+	background: #00c2ff;  
+}
+.info .title{
+	color:#333;
+	font-size: 20px;	
+	font-weight: bold; 
+}
+
+.info .subtitle{ 
+	color: #333;
+	font-size: 18px;  
+	margin-top: 24px;
+	margin-bottom: 12px;
+} 
+.info input{
+	width: 340px;
+	height: 34px; 
+	border:1px solid #bbb;
+	border-radius: 5px;   
+	font-size: 14px;
+	padding: 10px 16px; 
+}
+.info input:nth-child(5){  
+	background: url(./edm_btn_.png) no-repeat right center;
+}  
+.hint{ 
+	color:#999;
+	font-size: 14px; 
+}
+.action{
+	margin-top: 40px;
+
+
+}
+.btn{ 
+	padding-left: 50px;
+	padding-right: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 5px;  
+}
+.btn1{
+	color: #999;
+	background: #fff;
+	margin-right: 30px; 
+	border: 1px solid #bbb;
+}
+.btn2{
+	color: #fff;
+	background: #00c3fe;
+}
+
+/*footer*/ 
+.footer{   
+	background: #333;
+	height: 50px; 
+	line-height: 50px; 
+	margin-top: 80px;    
+}  
+.companyinfo{  
+	margin:0 auto;  
+	text-align: center;    
+}
+.footer span:nth-child(1){
+	color: #fff;  
+} 
+.footer span:nth-child(2){
+	color:#428bca;  
+	display: inline-block;
+	margin-left: 10px;     
+} 

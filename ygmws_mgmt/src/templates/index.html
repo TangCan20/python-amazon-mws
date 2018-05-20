@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TouchData Cleaner MGMT</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="{{url_for('static', filename='css/gridtable.css') }}" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <style>
+        body,td,th {
+         font-size: 12px;
+        }
+        body {
+         margin-left: 0px;
+         margin-top: 0px;
+         margin-right: 0px;
+         margin-bottom: 0px;
+        }
+        .map_series{height:200px;}
+        .type_map_cls{ float:left; width:30%; height:200px;}
+        .data_map{width:900px; height:300px;}
+        .counter_map_cls{float:center;width:900px; height:300px;}
+
+    </style>
+</head>
+
+<script type="text/javascript">
+    $().ready(function(){
+		$("#btn_view").on("click", function(event) {
+			get_redis_stat();
+		});
+
+		$("#btn_clear").on("click", function(event) {
+			clear_redis_stat();
+		});
+	});
+
+	function refresh_stat_list(data_dict) {
+			$("#queue_stat_table").empty();
+			$("#api_stat_table").empty();
+			$("#scheduler_stat_table").empty();
+			$("#executor_stat_table").empty();
+
+			$.each(data_dict.queue, function(n, data) {
+				$("#queue_stat_table").append("<tr>");
+				$("#queue_stat_table").append("<td>" + data.key + "</td>");
+				$("#queue_stat_table").append("<td>" + data.value + "</td>");
+				$("#queue_stat_table").append("</tr>");
+			});
+
+			$.each(data_dict.api, function(n, data) {
+				$("#api_stat_table").append("<tr>");
+				$("#api_stat_table").append("<td>" + data.key + "</td>");
+				$("#api_stat_table").append("<td>" + data.value + "</td>");
+				$("#api_stat_table").append("</tr>");
+			});
+
+			$.each(data_dict.scheduler, function(n, data) {
+				$("#scheduler_stat_table").append("<tr>");
+				$("#scheduler_stat_table").append("<td>" + data.key + "</td>");
+				$("#scheduler_stat_table").append("<td>" + data.value + "</td>");
+				$("#scheduler_stat_table").append("</tr>");
+			});
+
+			$.each(data_dict.executor, function(n, data) {
+				$("#executor_stat_table").append("<tr>");
+				$("#executor_stat_table").append("<td>" + data.key + "</td>");
+				$("#executor_stat_table").append("<td>" + data.value + "</td>");
+				$("#executor_stat_table").append("</tr>");
+			});
+        }
+
+
+	function get_redis_stat(){
+        $.ajax({
+            type: "GET",
+            url: './stat?op=get',
+            data: null,
+            success: function(data) {
+                console.log(data);
+                refresh_stat_list(data)
+            },
+            error: function(request, status, error) {
+            }
+        });
+	};
+
+	function clear_redis_stat(){
+        $.ajax({
+            type: "GET",
+            url: './stat?op=delete',
+            data: null,
+            success: function(data) {
+                console.log(data);
+                refresh_stat_list(data)
+            },
+            error: function(request, status, error) {
+            }
+        });
+	};
+</script>
+<body>
+<div style="margin-top: 30px;">
+    <div class='row' style="margin-left:50px;width:50%;">
+        <div class="col-xs-2">
+            <button class="btn btn-primary btn-sm" style="width:100%;" id='btn_view'>查看</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;" id='btn_clear'>清零</button>
+        </div>
+    </div>
+</div>
+<div class="box-body" style="display: block;margin-top:30px;margin-left:50px;width:100%;" >
+    <div>
+        <p>'队列统计值'</p>
+    </div>
+    <div class="table-responsive" id="queue_stat_table">
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th>统计项</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody id="queuestatTable">
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+</div>
+<div class="box-body" style="display: block;margin-top:30px;margin-left:50px;width:100%;" >
+    <div>
+        <p>'Executor统计值'</p>
+    </div>
+    <div class="table-responsive" id="executor_stat_table">
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th>统计项</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody id="clextractorstatTable">
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+</div>
+<div class="box-body" style="display: block;margin-top:30px;margin-left:50px;width:100%;" >
+    <div>
+        <p>'Scheduler统计值'</p>
+    </div>
+    <div class="table-responsive" id="scheduler_stat_table">
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th>统计项</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody id="clschedulerstatTable">
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+</div>
+<div class="box-body" style="display: block;margin-top:30px;margin-left:50px;width:100%;" >
+    <div>
+        <p>'API统计值'</p>
+    </div>
+    <div class="table-responsive" id="api_stat_table">
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th>统计项</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody id="clapistatTable">
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+</div>
+</body>
+</html>

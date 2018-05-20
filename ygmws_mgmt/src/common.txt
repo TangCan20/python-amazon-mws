@@ -1,0 +1,141 @@
+etcd --name 'spider_schedule' --listen-client-urls 'http://192.168.0.238:2379,http://192.168.0.238:4001' --advertise-client-urls 'http://192.168.0.238:2379,http://192.168.0.238:4001'
+sudo docker build -t etcd-browser .
+sudo docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=192.168.0.238  etcd-browser
+
+
+etcd --name 'spider_schedule' --listen-client-urls 'http://192.168.1.110:2379,http://192.168.1.110:4001' --advertise-client-urls 'http://192.168.1.110:2379,http://192.168.1.110:4001'
+sudo docker build -t etcd-browser .
+sudo docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=192.168.1.110  etcd-browser
+
+etcd --name 'spider_schedule' --listen-client-urls 'http://192.168.1.10:2379,http://192.168.1.10:4001' --advertise-client-urls 'http://192.168.1.10:2379,http://192.168.1.10:4001'
+sudo docker build -t etcd-browser .
+sudo docker run -d --name etcd-browser -p 0.0.0.0:8000:8000 --env ETCD_HOST=192.168.1.10  etcd-browser
+
+
+http://192.168.1.66:2379/version
+http://127.0.0.1:2379/version
+http://192.168.1.66:4001/version
+
+http://192.168.1.66:4001/v2/keys
+FlyingNuts@49913
+FlyingNuts@88998
+
+ETCD_SERVICE_SERVICE_HOST
+ETCD_SERVICE_SERVICE_PORT
+redis-cli -h 127.0.0.1 -p 6379
+redis-cli -h 192.168.1.66 -p 6379
+
+sudo /etc/init.d/redis-server start
+sudo /etc/init.d/redis-server stop
+http://192.168.1.66/v2/keys
+http://127.0.0.1:6789/capacity
+http://192.168.0.250:6789/cleaner/api/v1/capacity
+
+Content-Type:application/json;charset=utf-8
+{"task_list":[{
+    "url":'',
+    "result":"fail",
+    "task_id":"fdafdafdad"
+}]}
+
+<a href="/gp/pdp/profile/AHBCB81ILNX4Z/ref=cm_cr_dp_pdp" class="noTextDecoration">MissOliviaP</a>
+https://www.amazon.com/gp/profile/amzn1.account.AGFI4NJWMARDDVEGVDH6AENXA2OA?ie=UTF8&ref_=cm_cr_dp_pdp
+AGFI4NJWMARDDVEGVDH6AENXA2OA
+
+out = os.popen("ifconfig | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{print $1}' | head -1").read()
+
+import os
+import socket, fcntl, struct
+def get_ip_address(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', ifname[:15])
+    )[20:24])
+
+
+import socket
+import fcntl
+import struct
+def get_ip_address(ifname):
+  s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+  return socket.inet_ntoa(fcntl.ioctl(
+    s.fileno(),
+    0x8915, # SIOCGIFADDR
+    struct.pack('256s', ifname[:15])
+  )[20:24])
+
+import socket
+import fcntl
+import struct
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+x = s.fileno()
+frame = "eth0"
+frame_str=frame[:15]
+frame_enc_str=frame_str.encode('utf-8')
+struct_str = struct.Struct('4s')
+y= struct_str.pack(frame_enc_str)
+z = fcntl.ioctl(x, 0x8915, y)
+w = socket.inet_ntoa(z)
+
+temp_str = socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', 'eth0'))[20:24])
+
+
+import socket
+localIP = socket.gethostbyname(socket.gethostname())
+
+
+import socket
+ipList = socket.gethostbyname_ex(socket.gethostname())
+print(ipList)
+
+import socket
+import fcntl
+import struct
+def get_ip_address(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+    s.fileno(),
+    0x8915,
+    struct.pack(b"256s", ifname[:15])
+    )[20:24])
+
+
+git rm   commander.py
+git rm   common.txt
+git rm   configure.ini
+git rm   start_commander.sh
+git rm   tester/application_tester.py
+git rm   tester/application_tester_capacity.py
+git rm   tester/application_tester_email.py
+git rm   tester/base_tester.py
+git rm   tester/clear_statistics.py
+git rm   tester/clear_statistics.sh
+git rm   tester/clear_task_key.py
+git rm   tester/etcd_tester.py
+git rm   tester/read_email_from_txt.py
+git rm   tester/read_from_txt.sh
+git rm   tester/redis_queue_tester.py
+git rm   tester/tiny_tester.py
+git rm   tester/view_statistics.py
+git rm   tester/view_statistics.sh
+
+
+
+
+
+import requests
+data_dict = {'list': [
+    "zcamaro28@gmail.com"
+]}
+url = 'http://192.168.0.25:6789/cleaner/api/v1/task'
+r = requests.post(url, json=data_dict)
+
+
+30*24*60*60: 2592000
+
+285266099
+62ja6u
+
+http://192.1
