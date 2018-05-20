@@ -1,0 +1,28 @@
+http://192.168.1.66:2379/version
+http://127.0.0.1:2379/version
+
+etcd --name 'spider_schedule' --listen-client-urls 'http://192.168.0.241:2379,http://192.168.0.241:4001' --advertise-client-urls 'http://192.168.0.241:2379,http://192.168.0.241:4001'
+
+etcd --name 'etcd-browser' --listen-client-urls 'http://192.168.0.241:2379,http://192.168.0.241:4001' --advertise-client-urls 'http://192.168.0.241:2379,http://192.168.0.241:4001'
+
+
+http://192.168.1.66:4001/version
+
+http://192.168.1.66:4001/v2/keys
+FlyingNuts@49913
+FlyingNuts@88998
+
+ETCD_SERVICE_SERVICE_HOST
+ETCD_SERVICE_SERVICE_PORT
+redis-cli -h 127.0.0.1 -p 6379
+redis-cli -h 192.168.1.66 -p 6379
+
+sudo /etc/init.d/redis-server start
+sudo /etc/init.d/redis-server stop
+http://192.168.1.66/v2/keys
+
+http://192.168.0.250:19876/cleaner/scheduler/v1/task
+
+
+
+

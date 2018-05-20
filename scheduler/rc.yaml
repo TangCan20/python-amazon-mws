@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: 'ygawcde-scheduler'
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: ygawcde-scheduler
+        app: ygawcde
+    spec:
+      nodeSelector:
+        ygawcde_scheduler: master # kubectl label nodes 172.18.248.190, 172.18.248.189 ygawcde-scheduler=master
+      volumes:
+        - name: data
+          hostPath:
+           path: /production/ygawcde_scheduler/data
+      containers:
+        - name: ygawcde-scheduler
+          image: 172.18.248.180:5000/ygawcde_scheduler:latest
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: data
+              mountPath: /production/ygawcde_scheduler/data
+#          resources:
+#            limits:
+#              memory: "1024Mi"
+#          ports:
+#          - name: ygawcde-scheduler
+#            containerPort: 23052
+#            hostPort: 23052
+#            protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /ygawcde/scheduler/v1/alive
+              port: 23052
+            initialDelaySeconds: 60
+            timeoutSeconds: 60
+          env:
+            - name: ETCD_SERVICE_SERVICE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-node-info
+                  key: endpoints
+            - name: ETCD_SERVICE_SERVICE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-node-info
+                  key: port
